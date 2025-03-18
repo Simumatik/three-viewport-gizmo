@@ -538,7 +538,10 @@ export class ViewportGizmo extends Object3D<ViewportGizmoEventMap> {
 
     const drag = (e: PointerEvent) => {
       if (!this._dragging) {
-        if (isClick(e, this._pointerStart)) return;
+        if (isClick(e, this._pointerStart)) {
+          this.dispatchEvent({ type: "end" });
+          return;
+        }
         this._dragging = true;
       }
 
